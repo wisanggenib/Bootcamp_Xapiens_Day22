@@ -1,5 +1,6 @@
-export { default as HomeScreen } from './home'
+// export { default as HomeScreen } from './home'
 export { default as LoginScreen } from './login'
+export { default as RegisterScreen } from './register'
 export { default as ProfileScreen } from './profile'
 export { default as ProductScreens } from './product'
 export { default as DetailScreen } from './detail'

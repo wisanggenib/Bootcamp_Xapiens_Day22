@@ -32,9 +32,10 @@ const ProfileScreen = ({ navigation }) => {
                 :
                 <>
                     <View style={{ flex: 1 }}>
-                        <Text>{tempUser.full_name}</Text>
-                        <Text>{tempUser.email}</Text>
-                        <Text>{tempUser.phone_number}</Text>
+                        <Text style={{ fontSize: 16, fontWeight: 'bold' }}>Selamat Datang {tempUser.full_name}</Text>
+                        <Text>Username : {tempUser.username}</Text>
+                        <Text>Email : {tempUser.email}</Text>
+                        <Text>Phone : {tempUser.phone_number}</Text>
                         <View style={{ alignItems: 'center', marginTop: 100 }}>
                             <TouchableOpacity
                                 style={{ justifyContent: 'center', alignItems: 'center', padding: 20, width: 150, backgroundColor: 'green', borderRadius: 50 }}
