@@ -2,19 +2,20 @@ import React, { useEffect } from 'react'
 import { Provider, useDispatch, useSelector } from "react-redux";
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { PersistGate } from 'redux-persist/integration/react'
 
 import { HomeScreen, LoginScreen } from "./src/screens/index";
-import store from './src/features';
+import { store, persistor } from './src/features';
 const Stack = createStackNavigator();
-import { cekStatus } from "./src/features/auth/actions";
+
 
 const App = () => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(cekStatus())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(cekStatus())
+  // }, [])
 
   const isLogin = useSelector((state) => {
     return state.auth.isLogin;
@@ -45,7 +46,9 @@ const App = () => {
 const MasterApp = (props) => {
   return (
     <Provider store={store}>
-      <App {...props} />
+      <PersistGate loading={null} persistor={persistor}>
+        <App {...props} />
+      </PersistGate>
     </Provider>
   );
 };

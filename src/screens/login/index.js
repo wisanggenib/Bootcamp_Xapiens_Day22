@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, Button, TextInput } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
-import { setLogin, login } from "../../features/auth/actions";
+import { login } from "../../features/auth/actions";
 
 const LoginScreen = () => {
     // const data = { email: 'rin', password: 'rin' }
@@ -27,7 +27,7 @@ const LoginScreen = () => {
             />
             <Button
                 title="LOGIN NOW"
-                onPress={() => dispatch(login({ email: email, password: password }))}
+                onPress={() => dispatch(login())}
             />
         </View>
     )

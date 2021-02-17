@@ -1,10 +1,7 @@
-import { LOG_OUT, SET_LOGIN } from './constants';
+import { LOG_OUT, LOGIN } from './constants';
 
 const defaultState = {
     isLogin: false,
-    dataLogin: {
-        id: null,
-    },
     tempUser: null,
     user: [
         {
@@ -24,11 +21,11 @@ const defaultState = {
 
 const reducer = (state = defaultState, actions) => {
     switch (actions.type) {
-        case SET_LOGIN:
-            return { ...state, isLogin: true, tempUser: actions.payload };
+        case LOGIN:
+            return { ...state, isLogin: true };
             break;
         case LOG_OUT:
-            return { ...state, isLogin: false, tempUser: null };
+            return { ...state, isLogin: false };
             break;
 
         default:
