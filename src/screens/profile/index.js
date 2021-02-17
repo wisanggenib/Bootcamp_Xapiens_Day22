@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { ActivityIndicator, Text, View } from "react-native";
+import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser } from "../../features/user/actions";
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }) => {
 
     const dispatch = useDispatch();
 
@@ -21,18 +21,25 @@ const ProfileScreen = () => {
     }, [])
 
     return (
-        <View>
-            <Text>This is Profile Screen aaa {loading}</Text>
+        <View style={{ flex: 1, padding: 15 }}>
             {loading ?
-                <ActivityIndicator size='large' color='green' />
+                <View style={{ justifyContent: 'center', alignItems: 'center', flex: 1 }}>
+                    <ActivityIndicator size='large' color='green' />
+                </View>
                 :
                 <>
                     <View>
-                        <Text>{JSON.stringify(tempUser)}</Text>
-                        <Text>=======</Text>
                         <Text>{tempUser.full_name}</Text>
                         <Text>{tempUser.email}</Text>
                         <Text>{tempUser.phone_number}</Text>
+                        <View style={{ alignItems: 'center', marginTop: 100 }}>
+                            <TouchableOpacity
+                                style={{ justifyContent: 'center', alignItems: 'center', padding: 20, width: 150, backgroundColor: 'green', borderRadius: 50 }}
+                                onPress={() => navigation.navigate('Product')}
+                            >
+                                <Text style={{ color: 'white', fontWeight: 'bold' }}>All Post</Text>
+                            </TouchableOpacity>
+                        </View>
                     </View>
                 </>
             }

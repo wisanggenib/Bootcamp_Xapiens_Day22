@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { PersistGate } from 'redux-persist/integration/react'
 
-import { HomeScreen, LoginScreen, ProfileScreen } from "./src/screens/index";
+import { HomeScreen, LoginScreen, ProductScreens, ProfileScreen } from "./src/screens/index";
 import { store, persistor } from './src/features';
 const Stack = createStackNavigator();
 
@@ -30,6 +30,10 @@ const App = () => {
               <Stack.Screen
                 name="Profile"
                 component={ProfileScreen}
+              />
+              <Stack.Screen
+                name="Product"
+                component={ProductScreens}
               />
               <Stack.Screen
                 name="Home"

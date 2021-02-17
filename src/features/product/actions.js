@@ -1,20 +1,20 @@
 import axios from "axios";
-import { GET_POST, SET_POST, SET_LOADING } from "./constants";
+import { SET_PRODUCT, SET_LOADING } from "./constants";
 
-export const getPost = () => {
-    return { type: GET_POST, payload: '2' }
+export const setProduct = (data) => {
+    return { type: SET_PRODUCT, payload: data }
 }
 
 export const setLoading = (data) => {
     return { type: SET_LOADING, payload: data }
 }
 
-export const fetchPost = (id) => {
+export const fetchProduct = (id) => {
     return (dispatch, getState) => {
 
         // console.log(getState().auth)
         const TOKEN = getState().auth.token
-        // dispatch(setLoading(true));
+        dispatch(setLoading(true));
         // console.log('dispatch')
         axios
             .get(`https://simple-wms.herokuapp.com/api/v1/product`, {
@@ -23,14 +23,14 @@ export const fetchPost = (id) => {
                 }
             })
             .then((response) => {
-                console.log(response);
-                // dispatch({ type: SET_POST, payload: response.data });
+                // console.log(response.data.data);
+                dispatch({ type: SET_PRODUCT, payload: response.data.data });
             })
             .catch((error) => {
                 console.log({ error });
             })
             .finally(() => {
-                // dispatch(setLoading(false));
+                dispatch(setLoading(false));
                 console.log('done')
             });
     };

@@ -5,7 +5,7 @@ import thunkMiddleware from 'redux-thunk';
 
 
 import authReducer from './auth/reducer';
-import postReducer from './posts/reducer';
+import productReducer from './product/reducer';
 import userReducer from './user/reducer';
 
 // import loginMiddleware from '../helper/login';
@@ -17,7 +17,7 @@ import userReducer from './user/reducer';
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    post: postReducer,
+    product: productReducer,
     user: userReducer,
 });
 
