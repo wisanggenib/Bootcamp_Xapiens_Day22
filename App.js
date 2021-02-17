@@ -4,18 +4,12 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { PersistGate } from 'redux-persist/integration/react'
 
-import { HomeScreen, LoginScreen } from "./src/screens/index";
+import { HomeScreen, LoginScreen, ProfileScreen } from "./src/screens/index";
 import { store, persistor } from './src/features';
 const Stack = createStackNavigator();
 
 
 const App = () => {
-
-  const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(cekStatus())
-  // }, [])
 
   const isLogin = useSelector((state) => {
     return state.auth.isLogin;
@@ -32,10 +26,16 @@ const App = () => {
               component={LoginScreen}
             />
             :
-            <Stack.Screen
-              name="Home"
-              component={HomeScreen}
-            />
+            <>
+              <Stack.Screen
+                name="Profile"
+                component={ProfileScreen}
+              />
+              <Stack.Screen
+                name="Home"
+                component={HomeScreen}
+              />
+            </>
         }
       </Stack.Navigator>
     </NavigationContainer>

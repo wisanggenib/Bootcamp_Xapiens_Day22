@@ -6,6 +6,7 @@ import thunkMiddleware from 'redux-thunk';
 
 import authReducer from './auth/reducer';
 import postReducer from './posts/reducer';
+import userReducer from './user/reducer';
 
 // import loginMiddleware from '../helper/login';
 
@@ -17,6 +18,7 @@ import postReducer from './posts/reducer';
 const rootReducer = combineReducers({
     auth: authReducer,
     post: postReducer,
+    user: userReducer,
 });
 
 const persistConfig = {

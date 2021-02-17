@@ -1,8 +1,10 @@
-import { LOG_OUT, LOGIN } from './constants';
+import { LOG_OUT, LOGIN, SET_LOADING } from './constants';
 
 const defaultState = {
     isLogin: false,
-    tempUser: null,
+    tempId: null,
+    token: null,
+    isLoading: false,
     user: [
         {
             "id": 1,
@@ -22,11 +24,19 @@ const defaultState = {
 const reducer = (state = defaultState, actions) => {
     switch (actions.type) {
         case LOGIN:
-            return { ...state, isLogin: true };
+            // console.log('ini id', actions.payload.id)
+            // console.log('ini token', actions.payload.token)
+            return { ...state, isLogin: true, tempId: actions.payload.id, token: actions.payload.token };
             break;
+
         case LOG_OUT:
-            return { ...state, isLogin: false };
+            // console.log('You Logged LOut')
+            return { ...state, isLogin: false, tempId: null, token: null };
             break;
+
+        case SET_LOADING:
+            console.log("LOADING STATUS :", actions.payload)
+            return { ...state, isLoading: actions.payload };
 
         default:
             return state;
