@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Button, ActivityIndicator, TextInput } from "react-native";
 import { useDispatch, useSelector } from 'react-redux';
-import { getPost } from "../../features/posts/actions";
+import { getPost, fetchPost } from "../../features/posts/actions";
 const HomeScreen = () => {
 
     const dispatch = useDispatch()
@@ -16,7 +16,7 @@ const HomeScreen = () => {
             <Text>{POST}</Text>
             <Button
                 title="Change Post"
-                onPress={() => dispatch(getPost())}
+                onPress={() => dispatch(fetchPost())}
             />
         </View>
     )
