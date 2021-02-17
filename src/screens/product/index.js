@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import { ActivityIndicator, FlatList, Text, View } from "react-native";
+import { ActivityIndicator, FlatList, Text, TouchableOpacity, View } from "react-native";
 
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProduct } from "../../features/product/actions";
+import { fetchProduct, fetchDetail } from "../../features/product/actions";
 
-const ProductScreens = () => {
+const ProductScreens = ({ navigation }) => {
     const dispatch = useDispatch();
 
     const loading = useSelector((state) => {
@@ -42,7 +42,7 @@ const ProductScreens = () => {
                         renderItem={
                             ({ item }) =>
                                 <View style={{ borderWidth: 1, borderColor: 'black', marginBottom: 15, padding: 5, borderRadius: 10 }}>
-                                    <Text>{"Name : " + item.name}</Text>
+                                    <Text onPress={() => dispatch(fetchDetail(item.id))}>{"Name : " + item.name}</Text>
                                     <Text>{"Content : " + item.price}</Text>
                                     <Text>{"Content : " + item.stock}</Text>
                                 </View>

@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
-import { ActivityIndicator, Text, TouchableOpacity, View } from "react-native";
+import { ActivityIndicator, Button, Text, TouchableOpacity, View } from "react-native";
 
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchProduct } from "../../features/product/actions";
 import { fetchUser } from "../../features/user/actions";
+import { logOut } from "../../features/auth/actions";
 
 const ProfileScreen = ({ navigation }) => {
 
@@ -18,6 +20,7 @@ const ProfileScreen = ({ navigation }) => {
 
     useEffect(() => {
         dispatch(fetchUser())
+        console.log('load Profile')
     }, [])
 
     return (
@@ -28,18 +31,25 @@ const ProfileScreen = ({ navigation }) => {
                 </View>
                 :
                 <>
-                    <View>
+                    <View style={{ flex: 1 }}>
                         <Text>{tempUser.full_name}</Text>
                         <Text>{tempUser.email}</Text>
                         <Text>{tempUser.phone_number}</Text>
                         <View style={{ alignItems: 'center', marginTop: 100 }}>
                             <TouchableOpacity
                                 style={{ justifyContent: 'center', alignItems: 'center', padding: 20, width: 150, backgroundColor: 'green', borderRadius: 50 }}
-                                onPress={() => navigation.navigate('Product')}
+                                onPress={() => dispatch(fetchProduct())}
                             >
-                                <Text style={{ color: 'white', fontWeight: 'bold' }}>All Post</Text>
+                                <Text style={{ color: 'white', fontWeight: 'bold' }}>All Product</Text>
                             </TouchableOpacity>
                         </View>
+                    </View>
+                    <View>
+                        <Button
+                            color='red'
+                            title='Log Out'
+                            onPress={() => dispatch(logOut())}
+                        />
                     </View>
                 </>
             }

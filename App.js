@@ -4,9 +4,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { PersistGate } from 'redux-persist/integration/react'
 
-import { HomeScreen, LoginScreen, ProductScreens, ProfileScreen } from "./src/screens/index";
+import { HomeScreen, LoginScreen, ProductScreens, ProfileScreen, DetailScreen } from "./src/screens/index";
 import { store, persistor } from './src/features';
 const Stack = createStackNavigator();
+import { navigationRef } from './src/helper/navigator';
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
 
   console.log(isLogin)
   return (
-    <NavigationContainer >
+    <NavigationContainer ref={navigationRef}>
       <Stack.Navigator>
         {
           isLogin === false ?
@@ -34,6 +35,10 @@ const App = () => {
               <Stack.Screen
                 name="Product"
                 component={ProductScreens}
+              />
+              <Stack.Screen
+                name="Detail"
+                component={DetailScreen}
               />
               <Stack.Screen
                 name="Home"

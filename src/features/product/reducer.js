@@ -1,7 +1,8 @@
-import { SET_LOADING, SET_PRODUCT } from "./constants";
+import { SET_LOADING, SET_PRODUCT, SET_DETAIL } from "./constants";
 
 const defaultState = {
     product: null,
+    detailProduct: null,
     isLoading: true,
     totalPages: null,
     totalItems: null,
@@ -11,6 +12,10 @@ const reducer = (state = defaultState, actions) => {
     switch (actions.type) {
         case SET_PRODUCT:
             return { ...state, product: actions.payload.data, totalPages: actions.payload.totalPages, totalItems: actions.payload.totalItems };
+
+        case SET_DETAIL:
+            console.log(actions.payload)
+            return { ...state, detailProduct: actions.payload };
 
         case SET_LOADING:
             console.log("LOADING STATUS :", actions.payload)
